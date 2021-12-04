@@ -9,7 +9,6 @@ public abstract class Golosina{ //al tener al menos UN metodo abstracto, es
 	
 	public String getName() {return name;}
 	
-	
 	public double peso() {return peso;}
 	
 	public String gusto() {return sabor;} //OJO

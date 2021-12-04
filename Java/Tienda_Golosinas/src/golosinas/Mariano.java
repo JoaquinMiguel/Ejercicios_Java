@@ -2,10 +2,10 @@ package golosinas;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -16,29 +16,30 @@ public class Mariano {
 	static Scanner leer = new Scanner(System.in);
 	static ArrayList<Golosina> listaGolosinas = new ArrayList<Golosina>();
 	
+	
 	public static void main(String[] args){
 		String sabor = "frutilla";
 		List<String> miLista = Arrays.asList("Oblea","Chupetin","Bombon");
-		
+
 		comprar();
 		System.out.println("\nCantidad de golosinas: " + cantidadDeGolosinas());
-		
-		System.out.println(tieneLaGolosina("Oblea")); // hacer test
+		//System.out.println(tieneLaGolosina("Oblea")); // hacer test
 		//probarGolosina() // chequear dsp el estado
 		System.out.println("Golosinas sin TACC: " + hayGolosinaSinTACC());
-		
 		System.out.println("Precios cuidados: " + preciosCuidados());
+		
 		System.out.println("\nPrimer golosina de gusto '" + sabor + "': " + golosinaDeSabor(sabor));
 		System.out.println("Golosinas en la bolsa de gusto '" + sabor + "': " + golosinasDeSabor(sabor));
 		System.out.println("Sabores que se ha comprado: " + sabores());
 		System.out.println("Golosina mas cara de la bolsa: " + golosinaMasCara());
+		
 		System.out.println("\nPeso total de la bolsa de golosinas: " + pesoGolosinas());
 		System.out.println("Golosinas faltantes: " + golosinasFaltantes(miLista));
-		// gustosFaltantes(gustosDeseados);
+
 	}
 	
 
-	public static void comprar(){
+	private static void comprar(){
 		
 		char resp;
 		int op;
@@ -109,11 +110,11 @@ public class Mariano {
 	public static int cantidadDeGolosinas() {
 		return listaGolosinas.size();
 	}
-
+/*
 	public static boolean tieneLaGolosina(String unaGolosina) {
 		return listaGolosinas.stream()
 				.anyMatch(golo -> golo.getName().equals(unaGolosina));
-	}
+	}*/
 	
 	public static void probarGolosina() {
 		for(Golosina tipo: listaGolosinas) {
@@ -130,17 +131,19 @@ public class Mariano {
 				.allMatch(golo -> golo.precio() <= 10);
 	}
 	
-	public static Golosina golosinaDeSabor(String unSabor) {
+	public static String golosinaDeSabor(String unSabor) {
 		return listaGolosinas.stream()
 				.filter(v -> v.gusto() == unSabor)
 				.findFirst()
-				.orElse(null);
+				.orElse(null)
+			.getName();
 	}
 	// me tiene q devovler de una
-	public static List<Golosina> golosinasDeSabor(String unSabor) {
+	public static List<String> golosinasDeSabor(String unSabor) {
 
 		return listaGolosinas.stream()
 				.filter(v -> v.gusto() == unSabor)
+				.map(golo-> golo.getName())
 				.collect(Collectors.toList());
 	}
 	 
@@ -153,9 +156,10 @@ public class Mariano {
 		return miSet;
 	}
 	// Optional quiere decir q puede ser null
-	public static Optional<Golosina> golosinaMasCara() {
-		return listaGolosinas.stream()
-				.max(Comparator.comparing(golo -> golo.precio()));
+	public static String golosinaMasCara() {
+		return Collections
+				.max(listaGolosinas, Comparator.comparing(golo -> golo.precio()))
+				.getName();
 	}
 	
 	public static double pesoGolosinas() {
@@ -163,11 +167,22 @@ public class Mariano {
 				.mapToDouble(golo -> golo.peso())
 				.sum();
 	}
-	// chequear la impresion por consola!!
-	public static Stream<Golosina> golosinasFaltantes(List<String> golosinasDeseadas){
-		return listaGolosinas.stream()
-				.filter(golo -> !golosinasDeseadas.contains(golo.getName()));
+	
+	public static List<String> golosinasFaltantes(List<String> golosinasDeseadas){
+		return golosinasDeseadas.stream()
+				.filter(golosina -> !crearLista(listaGolosinas).contains(golosina))
+				.collect(Collectors.toList());
+		
+
+		//listaGolo contiene listaDeseada
 	}
 	
+	private static List<String> crearLista(ArrayList<Golosina> lista) {	
+		return lista.stream()
+				.map(g -> g.getName())
+				.collect(Collectors.toList());
+	}
+
+
 }
 
