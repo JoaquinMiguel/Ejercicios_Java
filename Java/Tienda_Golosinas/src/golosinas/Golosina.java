@@ -7,6 +7,8 @@ public abstract class Golosina{ //al tener al menos UN metodo abstracto, es
 	public String sabor;
 	public boolean libreGluten;
 	
+	
+	
 	public String getName() {return name;}
 	
 	public double peso() {return peso;}
