@@ -5,6 +5,7 @@ package golosinas;
 public class Chocolatin extends Golosina{
 	//private double precioDado;
 	public Chocolatin(double _peso) {
+		this.name = "Chocolatin";
 		this.peso = _peso;
 		this.precio = 0.5 * peso;
 		this.sabor = "chocolate";

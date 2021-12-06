@@ -5,6 +5,7 @@ public class TuttiFrutti extends Golosina{
 
 	
 	public TuttiFrutti() {
+		this.name = "TuttiFrutti";
 		this.peso = 5;
 		this.libreGluten = true;
 		this.sabor = ((Golosina) frutilla).gusto();

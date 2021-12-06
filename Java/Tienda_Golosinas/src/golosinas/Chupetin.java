@@ -3,6 +3,7 @@ package golosinas;
 public class Chupetin extends Golosina{
 
 	public Chupetin() {
+		this.name = "Chupetin";
 		this.precio = 2;
 		this.peso = 7;
 		this.sabor = "naranja";

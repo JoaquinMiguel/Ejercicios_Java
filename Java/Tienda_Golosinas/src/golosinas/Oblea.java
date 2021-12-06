@@ -3,6 +3,7 @@ package golosinas;
 public class Oblea extends Golosina{
 
 	public Oblea() {
+		this.name = "Oblea";
 		this.precio = 5;
 		this.peso = 250;
 		this.sabor = "vainilla";
