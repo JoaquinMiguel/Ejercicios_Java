@@ -22,7 +22,7 @@ public class Mariano {
 
 		comprar();
 		System.out.println("\nCantidad de golosinas: " + cantidadDeGolosinas());
-		//System.out.println(tieneLaGolosina("Oblea")); // hacer test
+		System.out.println(tieneLaGolosina("Oblea")); // hacer test
 		//probarGolosina() // chequear dsp el estado
 		System.out.println("Golosinas sin TACC: " + hayGolosinaSinTACC());
 		System.out.println("Precios cuidados: " + preciosCuidados());
@@ -102,18 +102,18 @@ public class Mariano {
 		listaGolosinas.add(tipo);
 	}	
 	
-	public static void desechar(Golosina unaGolosina) {
-		listaGolosinas.remove(unaGolosina);
+	public static void desechar(String unaGolosina) {
+		listaGolosinas.removeIf(golosina -> golosina.getName() == unaGolosina);
 	}
 	
 	public static int cantidadDeGolosinas() {
 		return listaGolosinas.size();
 	}
-/*
+
 	public static boolean tieneLaGolosina(String unaGolosina) {
 		return listaGolosinas.stream()
 				.anyMatch(golo -> golo.getName().equals(unaGolosina));
-	}*/
+	}
 	
 	public static void probarGolosina() {
 		for(Golosina tipo: listaGolosinas) {
@@ -136,8 +136,8 @@ public class Mariano {
 				.findFirst()
 				.orElse(null)
 			.getName();
-	}
-	// me tiene q devovler de una
+	}	//-^^^^^^^^^^ HACER EXCEPCION ^^^^
+
 	public static List<String> golosinasDeSabor(String unSabor) {
 
 		return listaGolosinas.stream()
@@ -154,7 +154,7 @@ public class Mariano {
 		}
 		return miSet;
 	}
-	// Optional quiere decir q puede ser null
+	
 	public static String golosinaMasCara() {
 		return Collections
 				.max(listaGolosinas, Comparator.comparing(golo -> golo.precio()))
@@ -182,5 +182,12 @@ public class Mariano {
 				.collect(Collectors.toList());
 	}
 
+	public static double gastoEn(String sabor) {
+		double total = 0;
+		for(Golosina golo : listaGolosinas) {
+			total =+ golo.precio();
+		}
+		return total;
+	}
+	
 }
-
