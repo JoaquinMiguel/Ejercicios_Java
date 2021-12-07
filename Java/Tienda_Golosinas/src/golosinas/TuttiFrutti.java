@@ -1,25 +1,26 @@
 package golosinas;
 
-import gustos.frutilla;
-public class TuttiFrutti extends Golosina{
+import gustos.*;
 
+public class TuttiFrutti extends Golosina{
+	
+	private Gustos tipoGusto =  new frutilla();
 	
 	public TuttiFrutti() {
 		this.name = "TuttiFrutti";
 		this.peso = 5;
 		this.libreGluten = true;
-		this.sabor = ((Golosina) frutilla).gusto();
+		this.sabor = tipoGusto.name;
 		}
-	
-	//private Object x = frutilla;
-	/*
-	 * poner atributos aca o hacer clases pero enrealidad son objetos!!
-	 */
 	
 	@Override
 	public void mordisco() {
-		this.sabor = sabor.gusto();
-		x = x.siguiente();
+		corrigo();
+		this.sabor = tipoGusto.name;
+	}
+	
+	private void corrigo() {
+		tipoGusto = tipoGusto.siguiente();
 	}
 	
 	public void setLibreGluten(boolean bool) {//setter

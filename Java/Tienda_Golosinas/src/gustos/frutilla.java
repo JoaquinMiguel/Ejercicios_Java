@@ -1,9 +1,15 @@
 package gustos;
 
-public class frutilla {
+public class frutilla extends Gustos{
+
+	public frutilla() {
+		this.name = "frutilla";
+	}
 	
-	public String siguiente() {
-		return "frutilla";
+	public Gustos siguiente() {
+		Gustos chocolate = new chocolate();
+		return chocolate;
 	}
 	
 }
+
