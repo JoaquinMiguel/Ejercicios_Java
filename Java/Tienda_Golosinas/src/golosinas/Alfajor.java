@@ -15,10 +15,5 @@ public class Alfajor extends Golosina{
 		peso = (peso * 0.8);
 	}
 
-	/*@Override
-	public String toString() {
-		return nombre;
-	}
-	*/
 
 }

@@ -68,17 +68,6 @@ Además, se deben poder realizar las siguientes estadísticas:
 * Lograr que a Mariano se le pueda preguntar `gustosFaltantes(gustosDeseados)`, que es una consulta similar a la anterior, pero donde `gustosDeseados`  es una colección de _gustos_. <br>
 Debe devolver los gustos que están entre los `gustosDeseados`, y que no están cubiertos por ninguna golosina de las que tiene Mariano.
 
-
-# Items desafío
-
-Son todos mensajes que debe entender mariano.
-
-- `gastoEn(sabor)`: precio total de las golosinas del sabor indicado.  
+* `gastoEn(sabor)`: precio total de las golosinas del sabor indicado.  
   Este no es _tan_ difícil.
-- `saborMasPopular()`: del que tiene más golosinas.  
-  Acá sí que se complica.  
-  _Pista_: puede tener sentido agregar un método auxiliar, que devuelva la cantidad de golosinas de un sabor.
-- `saborMasPesado()`: del que tiene más peso total.  
-  Es parecido al anterior.
-- `comproYDesecho(golosina)`: indica si Mariano primero compró, y después desechó, la golosina por la que se pregunta.  
-  _Pista_: agregar un nuevo atributo a mariano, tiene que memorizar una información extra.
+

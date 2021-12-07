@@ -1,6 +1,10 @@
 package prueba;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 //import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,20 +44,27 @@ class marianoTest {
 	}
 		
 	@Test
-	void sabores() {	// hacer excepcion  !!!!!!!!!!!
-		ArrayList<String> lista = new ArrayList<String>();
-		lista.add("Bombon");
+	void sabores() {
+		List<String> res = Arrays.asList("Bombon");
+		Set<String> res2 = new HashSet<>(Arrays.asList("frutilla", "chocolate"));
 		
-		Assertions.assertEquals(null, Mariano.golosinaDeSabor("naranja"));
+		Assertions.assertEquals("Bombon", Mariano.golosinaDeSabor("frutilla"));
 		
-		Assertions.assertEquals(lista, Mariano.golosinasDeSabor("frutilla"));
-		Assertions.assertEquals("frutilla", Mariano.sabores());
+		Assertions.assertEquals(res, Mariano.golosinasDeSabor("frutilla"));
+		Assertions.assertEquals(res2, Mariano.sabores());
 	}
 	
 	@Test
 	void tiposGolosinas() {
+		List<String> miLista = Arrays.asList("Oblea","Chupetin","Bombon");
+		List<String> res1 = Arrays.asList("Oblea","Chupetin");
 		
 		Assertions.assertEquals("Alfajor", Mariano.golosinaMasCara());
-		Assertions.assertEquals(null, Mariano.golosinasFaltantes(null));
+		Assertions.assertEquals(res1, Mariano.golosinasFaltantes(miLista));
+	}
+	
+	@Test
+	void gasto() {
+		Assertions.assertEquals(5, Mariano.gastoEn("frutilla"));
 	}
 }

@@ -16,11 +16,5 @@ public class Bombon extends Golosina{
 		peso = (peso * 0.8) - 1;
 	}
 
-	/*@Override
-	public String toString() {
-		return nombre;
-	}
-	*/
-	
 }
 

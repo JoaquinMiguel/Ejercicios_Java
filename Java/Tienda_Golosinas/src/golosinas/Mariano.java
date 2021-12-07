@@ -185,7 +185,9 @@ public class Mariano {
 	public static double gastoEn(String sabor) {
 		double total = 0;
 		for(Golosina golo : listaGolosinas) {
-			total =+ golo.precio();
+			if (golo.gusto() == sabor) {
+				total =+ golo.precio();
+			}
 		}
 		return total;
 	}
