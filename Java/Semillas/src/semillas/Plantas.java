@@ -25,4 +25,7 @@ public abstract class Plantas {
 		return this.espacio;
 	}
 	
+	public float horas() {
+		return horasDeSol;
+	}
 }
