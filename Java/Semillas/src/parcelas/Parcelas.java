@@ -3,10 +3,10 @@ import semillas.*;
 
 import java.util.ArrayList;
 
-public class Parcelas {
-	private final float ancho, largo;
-	private int horasDeSol;
-	private ArrayList<Plantas> listaPlanta = new ArrayList<Plantas>();
+public abstract class Parcelas {
+	protected final float ancho, largo;
+	protected int horasDeSol;
+	protected ArrayList<Plantas> listaPlanta = new ArrayList<Plantas>();
 	
 	public Parcelas(float ancho, float largo, int horas) {
 		this.ancho = ancho;
@@ -19,6 +19,9 @@ public class Parcelas {
 	}
 	
 	public void plantar(Plantas semilla) {
+		if( listaPlanta.size() > cantMaxima() || tieneMasHoras(semilla)) {
+			System.out.println("ERROR");
+		}
 		 listaPlanta.add(semilla);
 	}
 	
@@ -32,5 +35,22 @@ public class Parcelas {
 		.anyMatch( planta -> planta.horas() < this.horasDeSol);
 	}
 	
+	public boolean tieneMasHoras(Plantas semilla) {
+		return (this.horasDeSol - semilla.horasDeSol) >= 2;
+	}
+	
+	public abstract boolean seAsociaBien(Plantas semilla);
+	
+	public ArrayList<Plantas> lista(){
+		return listaPlanta;
+	}
+	
+	public int horas() {
+		return this.horasDeSol;
+	}
+	
+	public int cantPlantas() {
+		return listaPlanta.size();
+	}
 	
 }

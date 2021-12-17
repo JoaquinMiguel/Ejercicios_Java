@@ -1,9 +1,11 @@
 package semillas;
 
+import parcelas.Parcelas;
+
 public abstract class Plantas {
 	
-	public int anio;
-	public float altura, horasDeSol;
+	public int anio, horasDeSol;
+	public float altura;
 	double espacio;
 	
 	public Plantas(int _anio, float _altura) {
@@ -28,4 +30,6 @@ public abstract class Plantas {
 	public float horas() {
 		return horasDeSol;
 	}
+	
+	public abstract boolean esIdeal(Parcelas parcela);
 }

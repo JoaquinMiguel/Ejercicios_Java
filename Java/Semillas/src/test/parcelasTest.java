@@ -17,5 +17,10 @@ class parcelasTest {
 		
 		Assertions.assertFalse(unaParcela.tieneComplicaiones());// 2<6
 	}
+	
+	@Test
+	void plantacion() {
+		
+	}
 
 }
